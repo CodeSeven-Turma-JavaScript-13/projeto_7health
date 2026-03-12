@@ -26,16 +26,9 @@ export class ProdutoController {
   }
 
 
-  @Get('/:id')
-  @HttpCode(HttpStatus.OK)
-  findById(@Param('id', ParseIntPipe) id: number): Promise<Produto> {
-    return this.produtoService.findById(id);
-  }
-
-
   //FILTRO EXTRA: QUANTIDADE CALORIA
   @Get('/calorias')
-  findByCaloria(
+  findAllByCaloria(
     @Query('maior') maior?: string,
     @Query('menor') menor?: string,
   ) {
@@ -43,6 +36,13 @@ export class ProdutoController {
       maior ? Number(maior) : undefined,
       menor ? Number(menor) : undefined,
     );
+  }
+
+
+  @Get('/:id')
+  @HttpCode(HttpStatus.OK)
+  findById(@Param('id', ParseIntPipe) id: number): Promise<Produto> {
+    return this.produtoService.findById(id);
   }
 
 
@@ -58,7 +58,7 @@ export class ProdutoController {
   update(@Body() produto: Produto): Promise<Produto> {
     return this.produtoService.update(produto);
   }
-  
+
 
   @Delete('/:id')
   @HttpCode(HttpStatus.NO_CONTENT)
