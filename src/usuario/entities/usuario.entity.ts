@@ -42,8 +42,9 @@ export class Usuario {
     @CreateDateColumn({ type: "timestamp" })
     dataCriacao: Date
 
-      //Relacionamento com Produto
-    @OneToMany(() => Produto,(produto)=> produto.categoria)
+    
+    //Relacionamento com Produto
+    @OneToMany(() => Produto,(produto)=> produto.usuario)
     produto: Produto[];
    
 
