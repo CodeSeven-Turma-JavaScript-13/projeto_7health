@@ -62,7 +62,7 @@ O banco de dados foi estruturado para gerenciar o fluxo de pedidos de forma efic
 Estrutura organizada para facilitar **manutenção, escalabilidade e leitura técnica**:
 
 ```text
-📦 Super Geek
+📦 7HEALTH
  ┣ 📂 src
  ┃ ┣ 📂 categoria         # Entidade Categoria.
  ┃ ┣ 📂 produto           # Entidade Produto.
