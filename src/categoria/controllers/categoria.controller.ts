@@ -15,10 +15,10 @@ export class CategoriaController{
     }
 
     //PROCURAR POR DESCRICAO
-    @Get('/descricao/:descricao')
+    @Get('/nome/:nome')
     @HttpCode(HttpStatus.OK)
-    findByDescricao(@Param('descricao') descricao: string): Promise<Categoria[]>{
-        return this.categoriaService.findByDescricao(descricao);
+    findByNome(@Param('nome') nome: string): Promise<Categoria[]>{
+        return this.categoriaService.findByNome(nome);
     }
 
   //PROCURAR POR ID
