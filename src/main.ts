@@ -11,6 +11,7 @@ async function bootstrap() {
   .setVersion('1.0')
   .addBearerAuth()
   .build();
+  app.enableCors();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('/swagger', app, document);
   await app.listen(process.env.PORT ?? 4000);
