@@ -4,15 +4,18 @@ import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { NumericTransformer } from "../../../util/numericTransformer";
 import { Usuario } from "../../usuario/entities/usuario.entity";
 import { Categoria } from "../../categoria/entities/categoria.entity";
+import { ApiProperty } from "@nestjs/swagger";
 
 
 @Entity({name: 'tb_produtos'})
 export class Produto{
 
+    @ApiProperty()
     @PrimaryGeneratedColumn()
     id: number;
 
     //REGISTRO DO NOME
+    @ApiProperty()
     @Transform(({value} : TransformFnParams) => value ?.trim())
     @IsNotEmpty()
     @Column({length: 100, nullable: false})
@@ -20,6 +23,7 @@ export class Produto{
 
     
     //REGISTRO DA DESCRIÇÃO
+    @ApiProperty()
     @Transform(({value} : TransformFnParams) => value ?.trim())
     @IsNotEmpty()
     @Column({length: 1000, nullable: false})
@@ -27,6 +31,7 @@ export class Produto{
 
 
     //REGISTRO DO PREÇO
+    @ApiProperty()
     @IsNumber({ maxDecimalPlaces: 2})
     @IsNotEmpty()
     @IsPositive()
@@ -40,11 +45,13 @@ export class Produto{
 
 
     //REGISTRO DO CALORIA
+    @ApiProperty()
     @Column({ type: 'int' })
     caloria: number;
 
     
     //REGISTRO DO IMAGEM
+    @ApiProperty()
     @IsString()
     @IsUrl()
     @Column({ length: 500 })
@@ -53,6 +60,7 @@ export class Produto{
 
 
     //Relacionamento com Usuario
+    @ApiProperty({ type: () => Usuario })
     @ManyToOne(()=> Usuario, (usuario)=> usuario.produto, {
         onDelete: "CASCADE"
     })
@@ -60,6 +68,7 @@ export class Produto{
 
 
     //Relacionamento com Categoria
+    @ApiProperty({ type: () => Categoria })
     @ManyToOne(()=> Categoria, (categoria)=> categoria.produto, {
         onDelete: "CASCADE"
     })

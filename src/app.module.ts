@@ -29,6 +29,6 @@ import { CategoriaModule } from './categoria/categoria.module';
   
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [],
 })
 export class AppModule {}
